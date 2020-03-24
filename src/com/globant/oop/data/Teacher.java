@@ -34,4 +34,8 @@ public class Teacher {
     public void setSalary(float salary) {
         this.salary = salary;
     }
+    @Override
+    public String toString() {
+        return "\nTeacher Name:" + name;
+    }
 }
