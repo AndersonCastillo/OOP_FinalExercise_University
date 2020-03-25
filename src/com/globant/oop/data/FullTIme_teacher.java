@@ -11,20 +11,4 @@ public class FullTIme_teacher extends Teacher {
         this.experienceYears = exp;
     }
 
-    public double getSalaryBase() {
-        return salaryBase;
-    }
-
-    public void setSalaryBase(float salaryBase, int experience) {
-        this.salaryBase = salaryBase;
-    }
-
-    public int getExperienceYears() {
-        return experienceYears;
-    }
-
-    public void setExperienceYears(int experienceYears) {
-        this.experienceYears = experienceYears;
-    }
-
 }

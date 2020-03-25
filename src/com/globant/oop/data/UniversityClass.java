@@ -7,7 +7,7 @@ public class UniversityClass {
     private String classRoom;
     private Teacher classTeacher;
     private ArrayList<Student> classStudent;
-    public static ArrayList<UniversityClass> clasesList = new ArrayList<>();
+    private static ArrayList<UniversityClass> clasesList = new ArrayList<>();
 
 
     public UniversityClass(String className, String classRoom, ArrayList<Student> classStudent, Teacher classTeacher) {
@@ -17,17 +17,14 @@ public class UniversityClass {
         this.classTeacher = classTeacher;
     }
 
+    public static ArrayList<UniversityClass> getClassesList(){
+        return clasesList;
+    }
+
     public String getClassName() {
         return className;
     }
 
-    public String getClassRoom() {
-        return classRoom;
-    }
-
-    public Teacher getClassTeacher() {
-        return classTeacher;
-    }
     public ArrayList<Student> getClassStudent() {
         return classStudent;
     }
