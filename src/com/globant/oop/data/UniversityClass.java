@@ -21,8 +21,31 @@ public class UniversityClass {
         return clasesList;
     }
 
+    public static void printTheStudentClasses(Student x){
+        int i = 1;
+        for (UniversityClass searchClass: clasesList){
+            for(Student compare: searchClass.getClassStudent()){
+                if(compare.getId() == x.getId()){
+                    System.out.println(i + ".   " + searchClass.className);
+                    i++;
+                }
+            }
+        }
+    }
+
     public String getClassName() {
         return className;
+    }
+
+    public static boolean addedStudentValidation(ArrayList<Student> listing, Student compare){
+        int j = 0;
+        System.out.println(listing.size());
+        for (Student inList: listing){
+            if (inList.getId() == compare.getId()){
+                j++;
+            }
+        }
+        return j == 0;
     }
 
     public ArrayList<Student> getClassStudent() {

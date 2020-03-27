@@ -18,6 +18,10 @@ public class Student {
         return name;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public static ArrayList<Student> getStudentList() {
         return studentList;
     }

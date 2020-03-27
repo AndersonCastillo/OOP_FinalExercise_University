@@ -145,17 +145,15 @@ public class OopTest {
 
                         if (subOption < 1 || subOption > Teacher.getTeacherList().size()) {
                             subOption = -1;
+                            System.out.println("**      Typed option is wrong please try it again       **");
                         }
-                        switch (subOption) {
-                            case -1:
-                                System.out.println("**      Typed option is wrong please try it again       **");
-                                break; default: System.out.println("Teacher successfully added to new class");
-                                i = subOption;
-                                subOption = 0;
-                                break;
+                        else {
+                            System.out.println("Teacher successfully added to new class");
+                            break;
                         }
                     }
-                    Teacher teacherToAdd =  Teacher.getTeacherList().get(i - 1);
+                    Teacher teacherToAdd =  Teacher.getTeacherList().get(subOption - 1);
+                    subOption = -1;
                     ArrayList<Student> newStudents = new ArrayList<>();
                     while(subOption!=2) {
                         System.out.println("Do you want to add student/s to new class\n1. yes\n2. no");
@@ -175,8 +173,13 @@ public class OopTest {
                                 System.out.println("Typed Option is not an student");
                             }
                             else {
-                                System.out.println("Student successfully added");
-                                newStudents.add(Student.getStudentList().get(i - 1));
+                                if(UniversityClass.addedStudentValidation(newStudents,Student.getStudentList().get(i-1))) {
+                                    System.out.println("Student successfully added");
+                                    newStudents.add(Student.getStudentList().get(i - 1));
+                                }
+                                else {
+                                    System.out.println("Student was already added previously to this class");
+                                }
                             }
                         }
                         else {
@@ -187,7 +190,28 @@ public class OopTest {
                     UniversityClass.getClassesList().add(newClass);
                     break;
                 case 5:
-                    System.out.println("e");
+                    while(subOption!=2) {
+                        i=1;
+                        System.out.println("Press the 'Enter' key after typing the student number you want to add");
+                        for (Student s : Student.getStudentList()) {
+                            System.out.println(i + ". " + s.getName());
+                            i++;
+                        }
+                        System.out.println(i + ". Exit");
+                        subOption = console.nextInt();
+                        if (subOption < 0 || subOption >Student.getStudentList().size()+1){
+                            System.out.println("**      Typed option is wrong please try it again       **");
+                        }
+                        else if(subOption == i){
+                            System.out.println("Returning to previous menu");
+                            break;
+                        }
+                        else {
+                            System.out.println("Classes where " + Student.getStudentList().get(subOption-1).getName() + "is rolled in are:");
+                            UniversityClass.printTheStudentClasses(Student.getStudentList().get(subOption-1));
+                            break;
+                        }
+                    }
                     break;
                 case 6:
                     System.out.println("\n\nGood Bye");
